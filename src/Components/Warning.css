@@ -1,0 +1,45 @@
+@keyframes glitchShake{
+    0%{
+        transform: translate(0,0);
+        text-shadow: none;
+    }
+
+    10%{
+        transform: translate(-3px , 2px);
+        text-shadow: 5px 0 red , -5px 0 white;
+    }
+
+
+    20%{
+        transform: translate(3px , -4px);
+        text-shadow: -3px 0 red , 3px 0 rgb(255, 251, 0);
+    }
+
+    30%{
+        transform: translate(-2px , 1px)  ;
+        text-shadow: 3px 0 red , -3px 0 yellow;
+    }
+
+    40%{
+        transform: translate(0) ;
+        text-shadow: none;
+
+    }
+
+    70%{
+        transform:  translate(2px , -5px) ;
+        text-shadow: -4px 0 red , 4px 0 white;
+    }
+
+
+    80%{
+        transform: translate(2px , -4px );
+        text-shadow: -5px 0 red , 3px 0 yellow;
+    }
+
+
+    100%{
+        transform: translate(0deg);
+        text-shadow: none;
+    }
+}

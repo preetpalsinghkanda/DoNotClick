@@ -1,15 +1,16 @@
-import React from 'react'
-import Warning from './Components/Warning'
-import Warning2 from './Components/Warning2'
+import React, { useState } from "react";
+import Warning from "./Components/Warning";
+import Warning2 from "./Components/Warning2";
 
 const App = () => {
+  const [fate, setFate] = useState(false);
+
   return (
-    <div className='' >
-      {/* <Warning/> */}
-      <Warning2/>
-
+    <div className="">
+      {!fate && <Warning fate={fate} setFate={setFate} />}
+      {fate && <Warning2 />}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -3,7 +3,7 @@ import warning2bg from "../assets/warning2bg.jpg";
 import gsap from "gsap";
 import { Howl } from "howler";
 import warningSound2Mp3 from "../assets/warning2.mp3";
-import borderImg from "../assets/border.png"
+import borderImg from "../assets/border.png";
 
 const Warning2 = () => {
   const warningContainerRef = useRef(null);
@@ -17,7 +17,7 @@ const Warning2 = () => {
       src: warningSound2Mp3,
       loop: true,
       volume: 1,
-      autoplay: false,
+      autoplay: true,
       onload: () => {
         soundWarning2Ref.current.seek(62);
       },
@@ -31,7 +31,7 @@ const Warning2 = () => {
       opacity: 0,
       y: 20,
       scale: 1.1,
-      filter: "blur(8px)",
+      // filter: "blur(8px)",
       ease: "power2.inOut",
       duration: 0.6,
       stagger: {
@@ -57,6 +57,20 @@ const Warning2 = () => {
       },
       "<0.1",
     );
+
+    gsap.set([".leave", ".risk"], {
+      opacity: 0,
+    });
+
+    t1.to(".leave", {
+      opacity: 1,
+      duration: 7,
+    });
+
+    t1.to(".risk", {
+      opacity: 1,
+      duration: 15,
+    });
   }, []);
 
   return (
@@ -83,17 +97,38 @@ const Warning2 = () => {
           ))}
         </p>
 
-        <div   style={{fontFamily: "Uncial Antiqua"}} className="border border-white flex  text-3xl">
-          <div>
-            <img  style={{
-    filter:
-      "brightness(0) saturate(100%) invert(13%) sepia(91%) saturate(3515%) hue-rotate(350deg) brightness(79%) contrast(102%)",
-    opacity: 0.52,
-  }} className="border " src={borderImg} alt="" />
-            <button className="">
-            <a href="https://youtu.be/XqZsoesa55w?start=27">Leave now</a>
-          </button></div>
-          <div><img src={borderImg} alt="" /><button>Risk My Life</button></div>
+        <div
+          style={{ fontFamily: "Uncial Antiqua" }}
+          className=" relative top-20  flex w-fit mx-auto  text-3xl"
+        >
+          <div className="flex leave flex-col">
+            <img
+              style={{
+                filter:
+                  "brightness(0) saturate(100%) invert(13%) sepia(91%) saturate(3515%) hue-rotate(350deg) brightness(79%) contrast(102%)",
+                opacity: 0.9,
+              }}
+              className="w-50"
+              src={borderImg}
+              alt=""
+            />
+            <button className="text-[#ab1010]">
+              <a href="https://youtu.be/XqZsoesa55w?start=27">Leave now</a>
+            </button>
+          </div>
+          <div className="flex risk relative top-30 left-120 items-center justify-center flex-col">
+            <img
+              className="w-55"
+              style={{
+                filter:
+                  "brightness(0) saturate(100%) invert(13%) sepia(91%) saturate(3515%) hue-rotate(350deg) brightness(79%) contrast(102%)",
+                opacity: 0.7,
+              }}
+              src={borderImg}
+              alt=""
+            />
+            <button className="text-[#fdfcfc6f]">Risk My Life</button>
+          </div>
         </div>
       </div>
     </div>

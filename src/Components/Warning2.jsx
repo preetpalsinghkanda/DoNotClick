@@ -5,7 +5,7 @@ import { Howl } from "howler";
 import warningSound2Mp3 from "../assets/warning2.mp3";
 import borderImg from "../assets/border.png";
 
-const Warning2 = () => {
+const Warning2 = ({ setAccept, setFate }) => {
   const warningContainerRef = useRef(null);
   const soundWarning2Ref = useRef(null);
 
@@ -22,6 +22,11 @@ const Warning2 = () => {
         soundWarning2Ref.current.seek(62);
       },
     });
+
+
+    return ()=>{
+      soundWarning2Ref.current?.unload()
+    }
   }, []);
 
   useLayoutEffect(() => {
@@ -127,7 +132,16 @@ const Warning2 = () => {
               src={borderImg}
               alt=""
             />
-            <button className="text-[#fdfcfc6f]">Risk My Life</button>
+            <button
+              onClick={() => {
+                (soundWarning2Ref.current?.stop(),
+                  setFate(false),
+                  setAccept(true));
+              }}
+              className="text-[#fdfcfc6f] cursor-pointer"
+            >
+              Risk My Life
+            </button>
           </div>
         </div>
       </div>

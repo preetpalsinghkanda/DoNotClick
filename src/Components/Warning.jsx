@@ -20,9 +20,9 @@ const Warning = ({ fate, setFate }) => {
       },
     });
 
-    return ()=> {
-      soundWarningRef.current?.unload()
-    }
+    return () => {
+      soundWarningRef.current?.unload();
+    };
   }, []);
 
   const handleEnter = () => {
@@ -65,7 +65,7 @@ const Warning = ({ fate, setFate }) => {
       </p>
       <button
         onClick={() => {
-          soundWarningRef.current?.stop()
+          soundWarningRef.current?.stop();
           setFate(true);
         }}
         style={{ fontFamily: "Kranky" }}

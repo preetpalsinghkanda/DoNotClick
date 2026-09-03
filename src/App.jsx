@@ -5,12 +5,12 @@ import Hero from "./Components/Hero";
 
 const App = () => {
   const [fate, setFate] = useState(false);
-  const [accept, setAccept] = useState(false);
+  const [accept, setAccept] = useState(true);
 
   return (
     <div className="">
-      {!fate && !accept && <Warning fate={fate} setFate={setFate} />}
-      {fate && !accept && <Warning2 setAccept={setAccept} setFate={setFate} />}
+       {/* {!fate && !accept && <Warning fate={fate} setFate={setFate} />}
+      {fate && !accept && <Warning2 setAccept={setAccept} setFate={setFate} />}  */}
       {accept && <Hero />}
     </div>
   );

@@ -4,12 +4,12 @@ import hand from "../assets/hand.png";
 import gsap from "gsap";
 import { Howl } from "howler";
 import demonMp3 from "../assets/demon.mp3";
-import laughMp3 from "../assets/chucky_echo_laugh.mp3"
+import laughMp3 from "../assets/chucky_echo_laugh.mp3";
 
 const Hero = () => {
   const [hands, setHands] = useState([]);
   const sound3Ref = useRef(null);
-  const laughRef = useRef(null)
+  const laughRef = useRef(null);
 
   const addHand = () => {
     const newHands = Array.from({ length: 10 }, () => ({
@@ -19,7 +19,13 @@ const Hero = () => {
       width: Math.random() * 25,
     }));
 
-    setHands((p) => [...p, ...newHands]);
+    newHands.forEach((hand, index) => {
+      gsap.delayedCall(index * 0.3, () => {
+        setHands((p) => [...p, hand]);
+      });
+    });
+
+    // setHands((p) => [...p, ...newHands]);
   };
 
   useLayoutEffect(() => {
@@ -45,17 +51,18 @@ const Hero = () => {
       ">3",
     );
 
-    t2.to(".ghost_img", {
-      scale: 20,
-      opacity: 0,
-      duration: 1,
-      onStart : ()=>{
-        laughRef.current?.play()
-      }
-    },"-=2");
-
-
-
+    t2.to(
+      ".ghost_img",
+      {
+        scale: 20,
+        opacity: 0,
+        duration: 1,
+        onStart: () => {
+          laughRef.current?.play();
+        },
+      },
+      "-=2",
+    );
   }, []);
 
   useEffect(() => {
@@ -67,16 +74,15 @@ const Hero = () => {
     });
 
     laughRef.current = new Howl({
-      src : laughMp3,
-      autoplay : false,
+      src: laughMp3,
+      autoplay: false,
       loop: false,
       volume: 1,
-
-    })
+    });
 
     return () => {
       sound3Ref.current?.unload();
-      laughRef.current?.unload()
+      laughRef.current?.unload();
     };
   }, []);
 
@@ -85,19 +91,19 @@ const Hero = () => {
       <img src={ghost} className="ghost_img" alt="" />
       <img
         src={hand}
-        className="hand_img w-15 cursor-pointer absolute right-40 top-40"
+        className="hand_img w-15 z-20 cursor-pointer absolute right-40 top-40"
         alt=""
       />
       <img
         src={hand}
-        className="w-25 hand_img cursor-pointer bottom-30 absolute right-80"
+        className="w-25 z-20 hand_img cursor-pointer bottom-30 absolute right-80"
         alt=""
       />
 
       <img
         onClick={addHand}
         src={hand}
-        className="absolute hand_img cursor-pointer"
+        className="absolute z-20 hand_img cursor-pointer"
         alt=""
       />
 

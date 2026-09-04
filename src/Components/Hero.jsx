@@ -89,8 +89,11 @@ const Hero = ({ setAccept, setPage }) => {
   return (
     <div className=" flex justify-center overflow-hidden h-screen">
       <img src={ghost} className="ghost_img" alt="" />
+
       <img
-        onClick={() => {setAccept(false),setPage("cctv")}}
+        onClick={() => {
+          setAccept(false), setPage("cctv");
+        }}
         src={hand}
         className="hand_img w-15 z-20 cursor-pointer absolute right-40 top-40"
         alt=""

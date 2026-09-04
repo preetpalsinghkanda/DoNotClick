@@ -34,10 +34,10 @@ const Warning = ({ fate, setFate }) => {
     return (
       <div
         style={{ backgroundImage: `url(${bloodPng})` }}
-        className=" min-h-screen w-full flex items-center justify-center"
+        className=" min-h-screen bg-no-repeat bg-cover bg-center w-full flex items-center justify-center"
       >
         <button
-          className="text-black relative top-25 cursor-pointer py-1 font-extrabold text-2xl px-8 -leading-5 bg-[#c41717]"
+          className="text-black relative top-25 cursor-pointer py-1 font-extrabold text-2xl   px-8 -leading-5 bg-[#c41717]"
           onClick={handleEnter}
         >
           ENTER

@@ -53,7 +53,7 @@ const Cctv = () => {
   return (
     <div className="flex justify-center items-center ">
       <video
-        className="absolute left-20 cctv"
+        className="absolute left-1/12   cctv"
         muted
         playsInline
         autoPlay
@@ -71,7 +71,7 @@ const Cctv = () => {
       ></video>
 
       <audio ref={eyeMp3Ref} loop preload="auto" src={eyeMp3}></audio>
-      <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black via-black/90 to-transparent" />
+      <div className="absolute cctv inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black via-black/90 to-transparent" />
     </div>
   );
 };

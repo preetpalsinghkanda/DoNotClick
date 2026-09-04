@@ -6,7 +6,7 @@ import { Howl } from "howler";
 import demonMp3 from "../assets/demon.mp3";
 import laughMp3 from "../assets/chucky_echo_laugh.mp3";
 
-const Hero = () => {
+const Hero = ({ setAccept, setPage }) => {
   const [hands, setHands] = useState([]);
   const sound3Ref = useRef(null);
   const laughRef = useRef(null);
@@ -90,13 +90,14 @@ const Hero = () => {
     <div className=" flex justify-center overflow-hidden h-screen">
       <img src={ghost} className="ghost_img" alt="" />
       <img
+        onClick={() => {setAccept(false),setPage("cctv")}}
         src={hand}
         className="hand_img w-15 z-20 cursor-pointer absolute right-40 top-40"
         alt=""
       />
       <img
         src={hand}
-        className="w-25 z-20 hand_img cursor-pointer bottom-30 absolute right-80"
+        className="w-25  z-20 hand_img cursor-pointer bottom-30 absolute right-80"
         alt=""
       />
 

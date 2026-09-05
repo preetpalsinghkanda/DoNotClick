@@ -4,10 +4,34 @@ import gsap from "gsap";
 
 const Tv = () => {
   const tvRef = useRef(null);
+  const textRef = useRef(null);
   const [click, setClick] = useState(0);
 
-  // useLayoutEffect(()=>{
-  // },[])
+  const msg = {
+    2: ["Stop", "clicking", "the", "TV…", "again", "and", "again"],
+    3: ["Why", "are", "u", "still", "clicking?"],
+    4: ["I", "told", "you", "to", "STOPPP"],
+  };
+
+  useLayoutEffect(() => {
+    if (!msg[click] || !textRef.current) return;
+
+    const revert = gsap.context(() => {
+      gsap.fromTo(
+        ".sec_word",
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.2,
+          stagger: 0.6,
+        },
+      );
+    }, textRef);
+
+    return () => revert.revert();
+  }, [click]);
 
   function tvClick() {
     gsap.to(tvRef.current, {
@@ -23,11 +47,27 @@ const Tv = () => {
       <img
         ref={tvRef}
         onClick={() => {
-          tvClick(), setClick(click + 1);
+          (tvClick(), setClick(click + 1));
         }}
         className="border  cursor-pointer absolute top-1/3"
         src={tv}
       ></img>
+
+      {msg[click] && (
+        <p
+          ref={textRef}
+          className="text-white sec_line text-3xl absolute top-1/3"
+        >
+          {msg[click].map((word, x) => (
+            <span
+              key={x}
+              className="inline-block sec_word mr-2 text-[#ff0000db] font-bold"
+            >
+              {word}
+            </span>
+          ))}
+        </p>
+      )}
     </div>
   );
 };

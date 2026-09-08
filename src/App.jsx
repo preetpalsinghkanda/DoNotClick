@@ -4,19 +4,21 @@ import Warning2 from "./Components/Warning2";
 import Hero from "./Components/Hero";
 import Cctv from "./Components/Cctv";
 import Tv from "./Components/Tv";
+import Creepy from "./Components/Creepy";
 
 const App = () => {
   const [fate, setFate] = useState(false);
   const [accept, setAccept] = useState(true);
-  const [page , setPage] = useState("")
+  const [page, setPage] = useState("");
 
   return (
     <div className="">
       {/* {!fate && !accept && !page && <Warning fate={fate} setFate={setFate} />}
       {fate && !accept && !page && <Warning2 setAccept={setAccept} setFate={setFate} />}     */}
-      {accept && !page && <Hero setAccept={setAccept} setPage={setPage} />} 
-      {/* {page=== "cctv" && <Cctv/>}
-      {page==="tv" && <Tv/>} */}
+      {accept && !page && <Hero setAccept={setAccept} setPage={setPage} />}
+      {page === "cctv" && <Cctv />}
+      {page === "tv" && <Tv />}
+      {page === "creepy" && <Creepy />}
     </div>
   );
 };

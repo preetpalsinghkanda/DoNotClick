@@ -114,9 +114,20 @@ const Hero = ({ setAccept, setPage }) => {
         alt=""
       />
 
-      <img src={hand} className="h-55 hand_img cursor-pointer absolute left-20 bottom-10  -rotate-20" alt="" />
+      <img
+        src={hand}
+        className="h-55 hand_img cursor-pointer absolute left-20 bottom-10  -rotate-20"
+        alt=""
+      />
 
-      <img src={hand} className="h-60 hand_img -rotate-12 left-70 top-30 absolute" alt="" />
+      <img
+        src={hand}
+        onClick={() => {
+          (setAccept(false), setPage("creepy"));
+        }}
+        className="h-60 hand_img -rotate-12 left-70 top-30 absolute"
+        alt=""
+      />
 
       {hands.map((x) => (
         <img

@@ -2,23 +2,41 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import tv from "../assets/cursetv.gif";
 import gsap from "gsap";
 import buzzSound from "../assets/buzz.mp3";
-import g1 from "../assets/g1.jpg"
-import g2 from "../assets/g2.jpg"
-import g3 from "../assets/g3.jpg"
-
-
+import g1 from "../assets/g1.jpg";
+import g2 from "../assets/g2.jpg";
+import g3 from "../assets/g3.jpg";
+import horrorSound from "../assets/horrorsound.mp3";
+import { useEffect } from "react";
+import { Howl } from "howler";
+import glitchVideo from "../assets/GlitchVideo.mp4";
+import "./Tv.css"
 
 const Tv = () => {
   const tvRef = useRef(null);
   const textRef = useRef(null);
-  const [click, setClick] = useState(5);
+  const [click, setClick] = useState(0);
   const buzzRef = useRef(null);
+  const soundRef = useRef(null);
 
   const msg = {
     2: ["Stop", "clicking", "the", "TV…", "again", "and", "again"],
     3: ["Why", "are", "u", "still", "clicking?"],
     4: ["I", "told", "you", "to", "STOPPP"],
   };
+
+  useEffect(() => {
+    soundRef.current = new Howl({
+      src: horrorSound,
+      loop: true,
+      volume: 0.8,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (click === 6 && soundRef.current) {
+      soundRef.current.play();
+    }
+  }, [click]);
 
   useLayoutEffect(() => {
     if (!msg[click] || !textRef.current) return;
@@ -53,50 +71,47 @@ const Tv = () => {
     console.log(click);
   }
 
-  useLayoutEffect(()=>{
+  useLayoutEffect(() => {
+    if (click < 6) return;
+    const t1 = gsap.timeline();
 
-    if(click < 6) return
-    const t1 = gsap.timeline()
-
-    gsap.set([".g1",".g2", ".g3"],{
-      opacity : 0
-    })
-
-    t1.to(".g1",{
-      opacity : 0.5,
-      duration : 5
-
-    })
-
-    t1.to(".g1",{
-      opacity : 0,
-      duration : 2
-    })
-
-    t1.to(".g2",{
-      opacity : 0.8,
-      duration : 5
-    })
-
-    t1.to(".g2",{
-      opacity : 0,
-      duration  : 3
-
-    })
-
-    t1.to(".g3",{
-      opacity : 1,
-      duration : 7
-    })
-
-    t1.to(".g3",{
+    gsap.set([".g1", ".g2", ".g3"], {
       opacity: 0,
-      opacity: 3
-    })
+    });
 
+    t1.to(".g1", {
+      opacity: 0.5,
+      duration: 5,
+    });
 
+    t1.to(".g1", {
+      opacity: 0,
+      duration: 4,
+    });
 
-  },[click])
+    t1.to(".g2", {
+      opacity: 0.8,
+      duration: 5,
+    });
+
+    t1.to(".g2", {
+      opacity: 0,
+      duration: 4,
+    });
+
+    t1.to(".g3", {
+      opacity: 1,
+      duration: 7,
+    });
+
+    t1.to(".g3", {
+      opacity: 0,
+      duration: 5,
+      scaleX: 500,
+    });
+
+  
+  }, [click]);
 
   return (
     <div className=" flex items-center justify-center">
@@ -114,7 +129,7 @@ const Tv = () => {
       {msg[click] && (
         <p
           ref={textRef}
-          className="text-white sec_line text-3xl absolute top-1/3"
+          className="text-white z-11 sec_line text-3xl absolute top-1/3"
         >
           {msg[click].map((word, x) => (
             <span
@@ -127,17 +142,33 @@ const Tv = () => {
         </p>
       )}
 
-      {click>=6 && (<img className="g1 h-200 absolute top-1/16" src={g1} alt="" />)}
+      {click >= 6 && (
+        <img className="g1 h-200 absolute top-1/16" src={g1} alt="" />
+      )}
 
-      {click>=7 && (<img className="g2 absolute top-1/30" src={g2}>
-      </img>)}
+      {click >= 7 && <img className="g2 absolute top-1/30" src={g2}></img>}
 
-      {
-        click>=8 && (<img className="g3 absolute
-         top-1/45 h-200" src={g3} >
-        </img>)
-      }
-      
+      {click >= 8 && (
+        <img
+          className="g3 absolute
+         top-1/45 h-200"
+          src={g3}
+        ></img>
+      )}
+
+      {click > 9 && (
+        <div>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="z-[20]  fixed inset-0  h-screen w-full object-cover"
+            src={glitchVideo}
+          ></video>
+          <h2 className="z-[21] end flex inset-0 fixed items-center justify-center text-8xl text-[#bd1a1a]  font-bold">GAME OVER</h2>
+        </div>
+      )}
     </div>
   );
 };

@@ -70,6 +70,8 @@ const Cctv = () => {
         src={eyeMp4}
       ></video>
 
+      <p className="text-[#ffffff43] bottom-20 absolute ">Go Back Nowwwww</p>
+
       <audio ref={eyeMp3Ref} loop preload="auto" src={eyeMp3}></audio>
       <div className="absolute cctv inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black via-black/90 to-transparent" />
     </div>

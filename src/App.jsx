@@ -7,16 +7,16 @@ import Tv from "./Components/Tv";
 
 const App = () => {
   const [fate, setFate] = useState(false);
-  const [accept, setAccept] = useState(false);
-  const [page , setPage] = useState("tv")
+  const [accept, setAccept] = useState(true);
+  const [page , setPage] = useState("")
 
   return (
     <div className="">
       {/* {!fate && !accept && !page && <Warning fate={fate} setFate={setFate} />}
-      {fate && !accept && !page && <Warning2 setAccept={setAccept} setFate={setFate} />}    */}
-      {/* {accept && !page && <Hero setAccept={setAccept} setPage={setPage} />}  */}
-      {/* {page=== "cctv" && <Cctv/>} */}
-      {page==="tv" && <Tv/>}
+      {fate && !accept && !page && <Warning2 setAccept={setAccept} setFate={setFate} />}     */}
+      {accept && !page && <Hero setAccept={setAccept} setPage={setPage} />} 
+      {/* {page=== "cctv" && <Cctv/>}
+      {page==="tv" && <Tv/>} */}
     </div>
   );
 };

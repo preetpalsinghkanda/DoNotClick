@@ -92,24 +92,31 @@ const Hero = ({ setAccept, setPage }) => {
 
       <img
         onClick={() => {
-          setAccept(false), setPage("cctv");
+          (setAccept(false), setPage("cctv"));
         }}
         src={hand}
         className="hand_img w-15 z-20 cursor-pointer absolute right-40 top-40"
         alt=""
       />
       <img
+        onClick={() => {
+          (setAccept(false), setPage("tv"));
+        }}
         src={hand}
-        className="w-25  z-20 hand_img cursor-pointer bottom-30 absolute right-80"
+        className="w-25  z-20 hand_img -rotate-12 cursor-pointer bottom-30 absolute right-80"
         alt=""
       />
 
       <img
         onClick={addHand}
         src={hand}
-        className="absolute z-20 hand_img cursor-pointer"
+        className="absolute rotate-8 z-20 hand_img cursor-pointer"
         alt=""
       />
+
+      <img src={hand} className="h-55 hand_img cursor-pointer absolute left-20 bottom-10  -rotate-20" alt="" />
+
+      <img src={hand} className="h-60 hand_img -rotate-12 left-70 top-30 absolute" alt="" />
 
       {hands.map((x) => (
         <img

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Howl } from "howler";
 import creepyMp3 from "../assets/creepy.mp3";
 
+
 const Creepy = () => {
   const soundRef = useRef(null);
 
@@ -17,9 +18,9 @@ const Creepy = () => {
   }, []);
 
   return (
-    <div className=" w-full">
+    <div className="relative w-full  overflow-hidden">
       <iframe
-        className="w-full h-screen"
+        className="w-full h-screen block"
         src="https://galdrux.com/?pathologictimezone"
       ></iframe>
     </div>

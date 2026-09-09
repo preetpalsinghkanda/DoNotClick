@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Warning from "./Components/Warning";
 import Warning2 from "./Components/Warning2";
 import Hero from "./Components/Hero";
@@ -6,13 +6,21 @@ import Cctv from "./Components/Cctv";
 import Tv from "./Components/Tv";
 import Creepy from "./Components/Creepy";
 import Game from "./Components/Game";
-import Game2 from './Components/Game2'
+import Game2 from "./Components/Game2";
 
 const App = () => {
   const [fate, setFate] = useState(false);
   const [accept, setAccept] = useState(true);
   const [page, setPage] = useState("game");
   const [isGameOn, setIsGameOn] = useState(false);
+  const [input, setInput] = useState("");
+
+  useEffect(() => {
+    if (input === "101") {
+      setPage("");
+      setIsGameOn(false);
+    }
+  }, [input]);
 
   return (
     <div className="">
@@ -26,7 +34,15 @@ const App = () => {
         <Game isGameOn={isGameOn} setPage={setPage} setIsGameOn={setIsGameOn} />
       )}
 
-      {isGameOn && <Game2/>}
+      {isGameOn && <Game2 input={input} setInput={setInput} />}
+      {input === "101" && (
+        <p
+          style={{ fontFamily: "Kranky, serif" }}
+          className="text-white text-4xl  flex absolute left-10 top-1/2"
+        >
+          You Won :(
+        </p>
+      )}
     </div>
   );
 };

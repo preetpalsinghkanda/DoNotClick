@@ -1,16 +1,41 @@
-# React + Vite
+# Do Not Click (there's no back button)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A interactive horror and creepy mystery website (desktop) inspired by classic horror experiences.
+the user has to explore the website, interact with hidden elements, and enter the correct code to win.
+i used creepy sounds, jump scares, animations, dark visuals, and other elements to make the experience more scary, fun, and interesting
 
-Currently, two official plugins are available:
+> explore carefully... you never know what might appear next
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## Live Link
+``
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
+- interactive horror environments
+- clickable objects and hidden elements
+- made for desktop
+- jump scares and unexpected moments
+- different stages to explore
+- creepy background sounds and horror music
+- smooth GSAP animation
 
-## Expanding the Oxlint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Tech Stack
+- React js
+- Tailwind CSS
+- GSAP
+- Howler
+- html & css
+- JS
+
+
+## Preview
+
+<img width="1917" height="987" alt="image" src="https://github.com/user-attachments/assets/c38af845-f92d-464d-a820-5a144968fefc" />
+
+
+## Disclaimer
+
+This project is created for entertainment and educational purposes.
+it contains horror themed visuals, creepy sounds, fictional characters, and interactive scare elements
+NOT RECOMMENDED for users who dislike horror experiences

@@ -116,6 +116,9 @@ const Hero = ({ setAccept, setPage }) => {
 
       <img
         src={hand}
+        onClick={()=>{
+          setAccept(false) ,setPage("game")
+        }}
         className="h-55 hand_img cursor-pointer absolute left-20 bottom-10  -rotate-20"
         alt=""
       />
@@ -125,7 +128,7 @@ const Hero = ({ setAccept, setPage }) => {
         onClick={() => {
           (setAccept(false), setPage("creepy"));
         }}
-        className="h-60 hand_img -rotate-12 left-70 top-30 absolute"
+        className="h-60 hand_img -rotate-12 cursor-pointer left-70 top-30 absolute"
         alt=""
       />
 

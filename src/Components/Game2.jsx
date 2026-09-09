@@ -75,6 +75,7 @@ const Game2 = ({input , setInput}) => {
             Conspiracy Theory -
           </h4>
           <input
+          maxLength={3}
             onChange={(x) => setInput(x.target.value)}
             value={input}
             style={{ fontFamily: "Uncial Antiqua, system-ui" }}

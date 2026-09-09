@@ -4,7 +4,7 @@ import gate from "../assets/gate.png";
 import gateGif from "../assets/gate.gif";
 import written from "../assets/written.png";
 
-const Game = ({ setIsGameOn , setPage}) => {
+const Game = ({ setIsGameOn, setPage }) => {
   return (
     <div className="flex gap-30  flex-col justify-center items-center h-screen">
       <div className="flex items-center gap-20">
@@ -12,7 +12,8 @@ const Game = ({ setIsGameOn , setPage}) => {
         <div className="relative">
           <img
             onClick={() => {
-              (setIsGameOn(true), setPage(""));
+              setIsGameOn(true);
+              // setPage("");
             }}
             className="absolute cursor-pointer"
             src={gate}
